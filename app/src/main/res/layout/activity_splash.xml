@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity">
+
+    <ImageView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/logo"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/smslogo"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="School Management System"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"/>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:weightSum="6">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="47dp"
+            android:layout_weight="3"
+            android:layout_marginLeft="20dp"
+            android:text="Student"
+            android:textSize="18sp"
+            android:id="@+id/student_btn"
+            android:visibility="gone"
+            android:onClick="Student_button"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_background_shap"
+            />
+        <Button
+            android:layout_width="0dp"
+            android:textSize="18sp"
+            android:layout_height="47dp"
+            android:layout_weight="3"
+            android:textColor="@android:color/white"
+            android:background="@drawable/rounded_background_shap"
+            android:layout_marginLeft="20dp"
+            android:text="Admin"
+            android:visibility="gone"
+            android:layout_marginRight="20dp"
+            android:onClick="Teacher_button"
+            android:id="@+id/admin_btn"
+            />
+    </LinearLayout>
+</RelativeLayout>

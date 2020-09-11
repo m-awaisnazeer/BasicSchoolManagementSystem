@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "70875603441",
+    "firebase_url": "https://school-management-system-6d613.firebaseio.com",
+    "project_id": "school-management-system-6d613",
+    "storage_bucket": "school-management-system-6d613.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70875603441:android:7ed7f951e5d0b5ec0c6450",
+        "android_client_info": {
+          "package_name": "com.hamzasabir.schoolmanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70875603441-t66kkt77kf4oo1ronimj1648k8n5rtj7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnbtv1Hj4PLoAad9ivZoJTXdov9_u-90Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70875603441-t66kkt77kf4oo1ronimj1648k8n5rtj7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:layout_marginBottom="5dp"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        app:cardCornerRadius="9dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="10">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_weight="6"
+            android:id="@+id/img1"
+            android:scaleType="fitXY"
+            android:background="@android:color/darker_gray"
+            android:src="@drawable/ic_baseline_add_24" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:id="@+id/img2"
+                android:scaleType="fitXY"
+                android:background="@android:color/darker_gray"
+                android:src="@drawable/ic_baseline_add_24" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="1dp"
+                android:id="@+id/img3"
+                android:scaleType="fitXY"
+                android:background="@android:color/darker_gray"
+                android:src="@drawable/ic_baseline_add_24" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="Allied School"
+        android:paddingLeft="20dp"
+        android:id="@+id/schoolName"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:paddingLeft="30dp"
+        android:id="@+id/address"
+        />
+    <TextView
+        android:id = "@+id/moto"
+        android:textSize = "20dp"
+        android:textAlignment = "center"
+        android:layout_width = "match_parent"
+        android:ellipsize = "marquee"
+        android:fadingEdge = "horizontal"
+        android:marqueeRepeatLimit = "marquee_forever"
+        android:scrollHorizontally = "true"
+        android:textColor = "#ff4500"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text = "Simple application that shows how to use marquee, with a long text"
+        android:layout_height = "wrap_content"
+        android:singleLine = "true"
+        android:gravity="center_horizontal" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
