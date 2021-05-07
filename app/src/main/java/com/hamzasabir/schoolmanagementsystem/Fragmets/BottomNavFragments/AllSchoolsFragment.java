@@ -27,7 +27,7 @@ public class AllSchoolsFragment extends Fragment {
 
     RecyclerView all_schoolsRV;
     DatabaseReference allSchoolsRef;
-    ArrayList<SchoolModel> schoolModelArrayList = new ArrayList<>();
+    ArrayList<SchoolModel> schoolModelArrayList;
 
 
     @Override
@@ -47,6 +47,7 @@ public class AllSchoolsFragment extends Fragment {
     }
 
     private void populateRV() {
+        schoolModelArrayList = new ArrayList();
         allSchoolsRef.child("Schools").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

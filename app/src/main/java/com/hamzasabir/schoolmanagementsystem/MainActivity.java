@@ -1,12 +1,5 @@
 package com.hamzasabir.schoolmanagementsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,6 +7,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,9 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hamzasabir.schoolmanagementsystem.Fragmets.AddSchoolFragment;
 import com.hamzasabir.schoolmanagementsystem.Fragmets.AdmissionsRequestsFragment;
-import com.hamzasabir.schoolmanagementsystem.Fragmets.ChatFragment;
 import com.hamzasabir.schoolmanagementsystem.Fragmets.ManageSchoolFragment;
 import com.hamzasabir.schoolmanagementsystem.Fragmets.MyStudentsFragment;
+import com.hamzasabir.schoolmanagementsystem.Fragmets.ReleaseStudentResultFragment;
 import com.hamzasabir.schoolmanagementsystem.Fragmets.StaffFragment;
 import com.squareup.picasso.Picasso;
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     TextView name, email;
 
 
-    DatabaseReference adminRef,addSchoolcheckRef;
+    DatabaseReference adminRef, addSchoolcheckRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,23 +88,23 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.add_school:
                         addSchoolcheckRef.child("Schools").child(FirebaseAuth.getInstance().getUid())
                                 .addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if (snapshot.exists()){
-                                    Toast.makeText(MainActivity.this, "School Aleadry Added", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    setTitle("Add School");
-                                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                            new AddSchoolFragment()).commit();
-                                }
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.exists()) {
+                                            Toast.makeText(MainActivity.this, "School Aleadry Added", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            setTitle("Add School");
+                                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                                    new AddSchoolFragment()).commit();
+                                        }
 
-                            }
+                                    }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
+                                    }
+                                });
 
                         break;
 
@@ -127,6 +127,11 @@ public class MainActivity extends AppCompatActivity {
                         setTitle("My Student");
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new MyStudentsFragment()).commit();
+                        break;
+                    case R.id.nav_release_students_result:
+                        setTitle("Release Students Result");
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new ReleaseStudentResultFragment()).commit();
                         break;
                     case R.id.nav_logout:
                         FirebaseAuth.getInstance().signOut();

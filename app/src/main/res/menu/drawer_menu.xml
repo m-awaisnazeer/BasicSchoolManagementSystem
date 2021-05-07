@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/add_school"
-            android:title="Add School"
-            android:icon="@drawable/ic_baseline_add_24"/>
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="Add School" />
 
         <item
             android:id="@+id/nav_manage"
-            android:title="Add School Event"
-            android:icon="@drawable/ic_baseline_edit_24"/>
+            android:icon="@drawable/ic_baseline_edit_24"
+            android:title="Add School Event" />
         <item
             android:id="@+id/nav_new_admission"
-            android:title="New Admissions Request"
-            android:icon="@drawable/ic_baseline_notifications_active_24"/>
+            android:icon="@drawable/ic_baseline_notifications_active_24"
+            android:title="New Admissions Request" />
+        <item
+            android:id="@+id/nav_release_students_result"
+            android:icon="@drawable/ic_baseline_new_releases_24"
+            android:title="Release Student Result" />
+
+
         <item
             android:id="@+id/nav_staff"
-            android:title="My School Staff"
-            android:icon="@drawable/ic_baseline_people_24"/>
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="My School Staff" />
         <item
             android:id="@+id/nav_students"
-            android:title="My School Students"
-            android:icon="@drawable/ic_baseline_people_24"/>
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="My School Students" />
 
         <item
             android:id="@+id/nav_logout"
-            android:title="Logout"
-            android:icon="@drawable/ic_baseline_arrow_forward_24"/>
+            android:icon="@drawable/ic_baseline_arrow_forward_24"
+            android:title="Logout" />
     </group>
 
     <item android:title="communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:title="Share"
-                android:icon="@drawable/ic_baseline_share_24"/>
+                android:icon="@drawable/ic_baseline_share_24"
+                android:title="Share" />
             <item
                 android:id="@+id/nav_send"
-                android:title="Send"
-                android:icon="@drawable/ic_baseline_send_24"/>
+                android:icon="@drawable/ic_baseline_send_24"
+                android:title="Send" />
 
         </menu>
     </item>

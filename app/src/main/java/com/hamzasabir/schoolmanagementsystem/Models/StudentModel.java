@@ -1,12 +1,16 @@
 package com.hamzasabir.schoolmanagementsystem.Models;
 
 public class StudentModel {
+
+
     String imgURl,name,age,classTaken,describe,uid,schoolUid;
+    int totalMarks,obtainedMarks;
 
     public StudentModel() {
     }
 
-    public StudentModel(String imgURl, String name, String age, String classTaken, String describe, String uid, String schoolUid) {
+
+    public StudentModel(String imgURl, String name, String age, String classTaken, String describe, String uid, String schoolUid, int totalMarks, int obtainedMarks) {
         this.imgURl = imgURl;
         this.name = name;
         this.age = age;
@@ -14,6 +18,24 @@ public class StudentModel {
         this.describe = describe;
         this.uid = uid;
         this.schoolUid = schoolUid;
+        this.totalMarks = totalMarks;
+        this.obtainedMarks = obtainedMarks;
+    }
+
+    public int getTotalMarks() {
+        return totalMarks;
+    }
+
+    public void setTotalMarks(int totalMarks) {
+        this.totalMarks = totalMarks;
+    }
+
+    public int getObtainedMarks() {
+        return obtainedMarks;
+    }
+
+    public void setObtainedMarks(int obtainedMarks) {
+        this.obtainedMarks = obtainedMarks;
     }
 
     public String getImgURl() {
