@@ -3,21 +3,19 @@ package com.hamzasabir.schoolmanagementsystem.Fragmets;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -31,7 +29,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.hamzasabir.schoolmanagementsystem.MainActivity;
 import com.hamzasabir.schoolmanagementsystem.Models.SchoolEventModel;
-import com.hamzasabir.schoolmanagementsystem.Models.SchoolModel;
 import com.hamzasabir.schoolmanagementsystem.R;
 
 import java.util.ArrayList;
@@ -40,8 +37,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class ManageSchoolFragment extends Fragment {
 
-    EditText eventNameET, eventDateET, eventDescriptionET, schoolMotoET ;
-    Button  submitSchool;
+    EditText eventNameET, eventDateET, eventDescriptionET, schoolMotoET;
+    Button submitSchool;
     ProgressBar addSchoolProgressBar;
 
     ImageView img1, img2, img3;
@@ -63,7 +60,7 @@ public class ManageSchoolFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_manage_school, container, false);
+        View view = inflater.inflate(R.layout.fragment_manage_school, container, false);
 
         PostsImagesReferences = FirebaseStorage.getInstance().getReference();
         eventNameET = view.findViewById(R.id.eventNameET);
@@ -116,7 +113,7 @@ public class ManageSchoolFragment extends Fragment {
                 final String eventDate_String = eventDateET.getText().toString();
                 final String eventDescription_String = eventDescriptionET.getText().toString();
 
-                if (img1Uri == null) {
+                if (img1Uri == null && isAdded()) {
                     Toast.makeText(getActivity(), "Image 1 in not Selected", Toast.LENGTH_SHORT).show();
                     addSchoolProgressBar.setVisibility(View.GONE);
                 } else if (img2Uri == null) {
@@ -125,7 +122,7 @@ public class ManageSchoolFragment extends Fragment {
                 } else if (img3Uri == null) {
                     Toast.makeText(getActivity(), "Image 3 in not Selected", Toast.LENGTH_SHORT).show();
                     addSchoolProgressBar.setVisibility(View.GONE);
-                }  else if (TextUtils.isEmpty(eventName_String) && TextUtils.isEmpty(eventDate_String) && TextUtils.isEmpty(eventDescription_String)) {
+                } else if (TextUtils.isEmpty(eventName_String) && TextUtils.isEmpty(eventDate_String) && TextUtils.isEmpty(eventDescription_String)) {
                     Toast.makeText(getActivity(), "All Fields are requires", Toast.LENGTH_SHORT).show();
                     addSchoolProgressBar.setVisibility(View.GONE);
                 } else {
@@ -150,20 +147,21 @@ public class ManageSchoolFragment extends Fragment {
 
                                                         if (images_links.size() == images.size()) {
 
-                                                            SchoolEventModel model = new SchoolEventModel( images_links.get(0), images_links.get(1), images_links.get(2),
-                                                                    eventName_String,eventDate_String,eventDescription_String);
+                                                            SchoolEventModel model = new SchoolEventModel(images_links.get(0), images_links.get(1), images_links.get(2),
+                                                                    eventName_String, eventDate_String, eventDescription_String);
                                                             SchoolRef.child("Schools").child(FirebaseAuth.getInstance().getUid()).child("Events").push().setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                                 @Override
                                                                 public void onComplete(@NonNull Task<Void> task) {
-                                                                    if (task.isSuccessful()) {
+                                                                    if (task.isSuccessful() && isAdded()) {
                                                                         addSchoolProgressBar.setVisibility(View.GONE);
                                                                         Toast.makeText(getActivity(), "Submitted", Toast.LENGTH_SHORT).show();
                                                                         startActivity(new Intent(getActivity(), MainActivity.class));
                                                                         getActivity().finish();
                                                                     } else {
-                                                                        addSchoolProgressBar.setVisibility(View.GONE);
-                                                                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-
+                                                                        if (isAdded()) {
+                                                                            addSchoolProgressBar.setVisibility(View.GONE);
+                                                                            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                                                                        }
                                                                     }
                                                                 }
                                                             });

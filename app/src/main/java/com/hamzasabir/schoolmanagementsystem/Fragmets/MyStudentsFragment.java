@@ -67,7 +67,9 @@ public class MyStudentsFragment extends Fragment {
                             all_students.setAdapter(adapter);
 
                         } else {
-                            Toast.makeText(activity, "No Students Found", Toast.LENGTH_SHORT).show();
+                            if (isAdded()){
+                                Toast.makeText(activity, "No Students Found", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 

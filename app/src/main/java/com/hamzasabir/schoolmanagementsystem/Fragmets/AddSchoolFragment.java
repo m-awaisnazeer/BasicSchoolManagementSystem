@@ -3,11 +3,6 @@ package com.hamzasabir.schoolmanagementsystem.Fragmets;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -124,7 +123,7 @@ public class AddSchoolFragment extends Fragment {
                 final String priniciplename = schoolPrincipleET.getText().toString();
                 final String prinicipleContact = principleContactET.getText().toString();
 
-                if (img1Uri == null) {
+                if (img1Uri == null && isAdded()) {
                     Toast.makeText(getActivity(), "Image 1 in not Selected", Toast.LENGTH_SHORT).show();
                     addSchoolProgressBar.setVisibility(View.GONE);
                 } else if (img2Uri == null) {
@@ -183,14 +182,17 @@ public class AddSchoolFragment extends Fragment {
                                                                 @Override
                                                                 public void onComplete(@NonNull Task<Void> task) {
                                                                     if (task.isSuccessful()) {
-                                                                        addSchoolProgressBar.setVisibility(View.GONE);
-                                                                        Toast.makeText(getActivity(), "Submitted", Toast.LENGTH_SHORT).show();
-                                                                        startActivity(new Intent(getActivity(), MainActivity.class));
-                                                                        getActivity().finish();
+                                                                        if (isAdded()) {
+                                                                            addSchoolProgressBar.setVisibility(View.GONE);
+                                                                            Toast.makeText(getActivity(), "Submitted", Toast.LENGTH_SHORT).show();
+                                                                            startActivity(new Intent(getActivity(), MainActivity.class));
+                                                                            getActivity().finish();
+                                                                        }
                                                                     } else {
-                                                                        addSchoolProgressBar.setVisibility(View.GONE);
-                                                                        Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
-
+                                                                        if (isAdded()) {
+                                                                            addSchoolProgressBar.setVisibility(View.GONE);
+                                                                            Toast.makeText(getActivity(), "Error", Toast.LENGTH_SHORT).show();
+                                                                        }
                                                                     }
                                                                 }
                                                             });

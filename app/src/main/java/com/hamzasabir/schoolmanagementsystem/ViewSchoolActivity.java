@@ -1,19 +1,18 @@
 package com.hamzasabir.schoolmanagementsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,14 +26,12 @@ import com.hamzasabir.schoolmanagementsystem.Models.SchoolEventModel;
 import com.hamzasabir.schoolmanagementsystem.Models.SchoolModel;
 import com.hamzasabir.schoolmanagementsystem.Models.StaffModel;
 import com.hamzasabir.schoolmanagementsystem.Services.PicassoImageLoadingService;
+import com.hamzasabir.schoolmanagementsystem.dialogs.ShowResultFragment;
 
 import java.util.ArrayList;
 
-import ss.com.bannerslider.ImageLoadingService;
 import ss.com.bannerslider.Slider;
 import ss.com.bannerslider.event.OnSlideClickListener;
-
-import static androidx.recyclerview.widget.RecyclerView.HORIZONTAL;
 
 public class ViewSchoolActivity extends AppCompatActivity {
 
@@ -42,11 +39,14 @@ public class ViewSchoolActivity extends AppCompatActivity {
     DatabaseReference schoolRef, StaffRef, EventsRef, AdmissionRef;
     private Slider slider;
     private PicassoImageLoadingService PicassoImageLoadingService;
+    FragmentManager fm;
 
     RecyclerView staff_RV, events_RV;
     ArrayList<StaffModel> staffModelArrayList;
     ArrayList<SchoolEventModel> schoolEventModelArrayList;
     TextView schoolName, address, moto, applyForAdmission, message, StaffTextView, eventTextview;
+    CardView get_result;
+    ShowResultFragment showResultFragmentDialog;
 
 
     @Override
@@ -61,6 +61,10 @@ public class ViewSchoolActivity extends AppCompatActivity {
         StaffTextView = findViewById(R.id.text);
         eventTextview = findViewById(R.id.eventText);
 
+
+        fm = getSupportFragmentManager();
+        showResultFragmentDialog = ShowResultFragment.newInstance();
+
         staff_RV.setHasFixedSize(true);
         staff_RV.setLayoutManager(new LinearLayoutManager(ViewSchoolActivity.this, LinearLayoutManager.HORIZONTAL, false));
         events_RV = findViewById(R.id.events_RV);
@@ -70,7 +74,7 @@ public class ViewSchoolActivity extends AppCompatActivity {
         schoolName = findViewById(R.id.schoolName);
         address = findViewById(R.id.address);
         moto = findViewById(R.id.moto);
-
+        get_result = findViewById(R.id.get_result);
 
         schoolRef = FirebaseDatabase.getInstance().getReference();
         AdmissionRef = FirebaseDatabase.getInstance().getReference();
@@ -159,8 +163,7 @@ public class ViewSchoolActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             Toast.makeText(ViewSchoolActivity.this, "You already applied for admission, Wait for Confirmation!", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
                             startActivity(new Intent(ViewSchoolActivity.this, ApplyForAdmissionsActivity.class).putExtra("uid", uid));
                             finish();
                         }
@@ -176,6 +179,13 @@ public class ViewSchoolActivity extends AppCompatActivity {
             }
         });
 
+
+        get_result.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showResultFragmentDialog.show(fm, "Result Fragment");
+            }
+        });
 
         populateEvents();
     }
@@ -201,7 +211,7 @@ public class ViewSchoolActivity extends AppCompatActivity {
                         events_RV.setAdapter(adapter);
                         eventTextview.setVisibility(View.VISIBLE);
 
-                    }else {
+                    } else {
                         eventTextview.setVisibility(View.GONE);
                     }
                 }

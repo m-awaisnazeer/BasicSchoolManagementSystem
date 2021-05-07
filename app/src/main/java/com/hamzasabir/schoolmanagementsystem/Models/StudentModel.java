@@ -4,7 +4,7 @@ public class StudentModel {
 
 
     String imgURl,name,age,classTaken,describe,uid,schoolUid;
-    int totalMarks,obtainedMarks;
+    int totalMarks=0,obtainedMarks=0;
 
     public StudentModel() {
     }
