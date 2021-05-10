@@ -95,7 +95,7 @@ public class ApplyForAdmissionsActivity extends AppCompatActivity {
                                                 public void onSuccess(Uri uri) {
                                                     String imgUrl = String.valueOf(uri);
 
-                                                    StudentModel studentModel = new StudentModel(imgUrl,name_str,age_String,class_taken_String,describe_str,FirebaseAuth.getInstance().getUid(),uid);
+                                                    StudentModel studentModel = new StudentModel(imgUrl,name_str,age_String,class_taken_String,describe_str,FirebaseAuth.getInstance().getUid(),uid,0,0);
 
                                                     StaffRef.child("AdmissionsRequests").child(FirebaseAuth.getInstance().getUid())
                                                             .setValue(studentModel).addOnCompleteListener(new OnCompleteListener<Void>() {
