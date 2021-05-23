@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
-    tools:context=".dialogs.ShowResultFragment">
+    tools:context="com.usamatariq.schoolmanagementsystem.dialogs.ShowResultFragment">
 
     <ProgressBar
         android:id="@+id/pb_show_result"

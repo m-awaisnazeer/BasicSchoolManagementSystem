@@ -13,24 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdmissionRequestActivity"></activity>
-        <activity android:name=".ApplyForAdmissionsActivity" />
-        <activity android:name=".AddStaffActivity" />
+        <activity android:name="com.usamatariq.schoolmanagementsystem.AdmissionRequestActivity"></activity>
+        <activity android:name="com.usamatariq.schoolmanagementsystem.ApplyForAdmissionsActivity" />
+        <activity android:name="com.usamatariq.schoolmanagementsystem.AddStaffActivity" />
         <activity
-            android:name=".ViewImageActivity"
+            android:name="com.usamatariq.schoolmanagementsystem.ViewImageActivity"
             android:theme="@style/Splash" />
-        <activity android:name=".ViewSchoolActivity" />
+        <activity android:name="com.usamatariq.schoolmanagementsystem.ViewSchoolActivity" />
         <activity
-            android:name=".AdminLogin"
+            android:name="com.usamatariq.schoolmanagementsystem.AdminLogin"
             android:theme="@style/NoActionBarMainActivity" />
         <activity
-            android:name=".StudentLogin"
+            android:name="com.usamatariq.schoolmanagementsystem.StudentLogin"
             android:theme="@style/NoActionBarMainActivity" />
         <activity
-            android:name=".StudentDashboard"
+            android:name="com.usamatariq.schoolmanagementsystem.StudentDashboard"
             android:theme="@style/NoActionBarMainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.usamatariq.schoolmanagementsystem.SplashActivity"
             android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.usamatariq.schoolmanagementsystem.MainActivity"
             android:theme="@style/NoActionBarMainActivity" />
     </application>
 

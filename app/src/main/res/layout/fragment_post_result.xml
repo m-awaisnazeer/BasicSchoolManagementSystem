@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".dialogs.ShowResultFragment">
+    tools:context="com.usamatariq.schoolmanagementsystem.dialogs.ShowResultFragment">
 
     <TextView
         android:layout_width="match_parent"
