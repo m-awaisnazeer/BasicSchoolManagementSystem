@@ -61,28 +61,32 @@ public class PostResultFragment extends DialogFragment {
                 }
 
                 HashMap<String, Object> resultMap = new HashMap<>();
-                resultMap.put("obtainedMarks", edt_enter_obtained_marks.getText().toString());
-                resultMap.put("totalMarks", edt_enter_total_marks.getText().toString());
+                resultMap.put("obtainedMarks", Integer.valueOf(edt_enter_obtained_marks.getText().toString()));
+                resultMap.put("totalMarks", Integer.valueOf(edt_enter_total_marks.getText().toString()));
 
-                FirebaseDatabase.getInstance().getReference().child("Schools")
-                        .child(FirebaseAuth.getInstance().getUid()).child("MyStudents")
-                        .child(selectedStudent.getUid()).updateChildren(resultMap)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    getDialog().dismiss();
-                                }
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
+                FirebaseDatabase.getInstance().getReference().child("Students").child(selectedStudent.getUid())
+                        .updateChildren(resultMap);
+                getDialog().dismiss();
 
-                    }
-                });
+//                FirebaseDatabase.getInstance().getReference().child("Schools")
+//                        .child(FirebaseAuth.getInstance().getUid()).child("MyStudents")
+//                        .child(selectedStudent.getUid()).updateChildren(resultMap)
+//                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(Task<Void> task) {
+//                                if (task.isSuccessful()) {
+//                                    getDialog().dismiss();
+//                                }
+//                            }
+//                        }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(Exception e) {
+//
+//                    }
+//                });
+//
             }
         });
-
 
         return view;
     }
