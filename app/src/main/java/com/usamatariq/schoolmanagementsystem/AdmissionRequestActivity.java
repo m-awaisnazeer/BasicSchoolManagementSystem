@@ -1,13 +1,13 @@
 package com.usamatariq.schoolmanagementsystem;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,9 +15,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.usamatariq.schoolmanagementsystem.Models.StudentModel;
 import com.hamzasabir.schoolmanagementsystem.R;
 import com.squareup.picasso.Picasso;
+import com.usamatariq.schoolmanagementsystem.Models.StudentModel;
 
 public class AdmissionRequestActivity extends AppCompatActivity {
 
@@ -39,7 +39,6 @@ public class AdmissionRequestActivity extends AppCompatActivity {
         classTV = findViewById(R.id.classTV);
         describe = findViewById(R.id.describe);
         accept = findViewById(R.id.accept);
-        decline = findViewById(R.id.decline);
 
         uid = getIntent().getStringExtra("uid");
         AdmissionsRef = FirebaseDatabase.getInstance().getReference();
@@ -47,7 +46,7 @@ public class AdmissionRequestActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                     model = snapshot.getValue(StudentModel.class);
+                    model = snapshot.getValue(StudentModel.class);
                     name.setText(model.getName());
                     age.setText(model.getAge());
                     classTV.setText(model.getClassTaken());
@@ -63,26 +62,20 @@ public class AdmissionRequestActivity extends AppCompatActivity {
             }
         });
 
-                accept.setOnClickListener(new View.OnClickListener() {
+        accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 AdmissionsRef.child("AdmissionsRequests").child(uid).setValue(null);
                 AdmissionsRef.child("Students").child(uid).child("MySchool").child("id").setValue(FirebaseAuth.getInstance().getUid());
-                AdmissionsRef.child("Schools").child(FirebaseAuth.getInstance().getUid()).child("MyStudents").push().setValue(model);
+                AdmissionsRef.child("Schools").child(FirebaseAuth.getInstance().getUid()).child("MyStudents").child(model.getUid()).setValue(model);
 
-                startActivity(new Intent(AdmissionRequestActivity.this,MainActivity.class));
+                startActivity(new Intent(AdmissionRequestActivity.this, MainActivity.class));
                 finish();
 
 
             }
         });
 
-        decline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                AdmissionsRef.child("AdmissionsRequests").child(uid).setValue(null);
-            }
-        });
     }
 }
