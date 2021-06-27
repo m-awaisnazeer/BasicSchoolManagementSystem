@@ -81,40 +81,28 @@
                 android:layout_marginRight="5dp"
                 android:hint="Define Your Self, Previous Schooling History.." />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/describe"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
-                android:weightSum="10"
                 >
 
                 <Button
                     android:id="@+id/accept"
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_background_shap"
                     android:text="Accept"
-                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:paddingRight="25dp"
+                    android:layout_centerHorizontal="true"
+                    android:paddingLeft="25dp"
                     android:textColor="@android:color/white"
                     android:textSize="21sp"
                     />
-
-                <Button
-                    android:id="@+id/decline"
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:background="@drawable/rounded_background_shap"
-                    android:text="Decline"
-                    android:textColor="@android:color/white"
-                    android:textSize="21sp"
-                    />
-            </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
